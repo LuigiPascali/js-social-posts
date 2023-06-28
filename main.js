@@ -53,6 +53,18 @@ const posts = [
         },
         "likes": 95,
         "created": "2021-03-05"
+    },
+    {
+        "id": 6,
+        "content": "I Bonus 1 e 2 proverò a farli domani perchè oggi mi sta esplodendo la testa, ma questo esercizio è stato un ottimo allenamento per creare la pagina completamente in JavaScript. Questo è lo stato del mio cervello in questo momento:",
+        "media": "https://unsplash.it/600/400?image=79",
+        "author": {
+            "name": "Luigi Maria Pascali",
+            "image": "https://unsplash.it/300/300?image=1"
+        },
+        "likes": 71,
+        "created": "2023-06-28"
+
     }
 ];
 
@@ -60,8 +72,6 @@ const posts = [
 
 // Selezione dell'elemento container
 const container = document.getElementById('container');
-
-
 
 // Itero sull'array dei post
 posts.forEach(post => {
