@@ -58,58 +58,126 @@ const posts = [
 
 // MILESTONE 2: 
 
+// Selezione dell'elemento container
 const container = document.getElementById('container');
 
 // Itero sull'array dei post
 posts.forEach(post => {
-    console.log('Post:', post);
-    // Creo un elemento div per il post:
-    const postElement = document.createElement('div');
-    postElement.classList.add('post');
+  // Creo un elemento div per il post:
+  const postElement = document.createElement('div');
+  postElement.classList.add('post');
 
-    console.log('Post Element:', postElement);
+  // Creo elemento dell'intestazione del post:
+  const postHeaderElement = document.createElement('div');
+  postHeaderElement.classList.add('post__header');
 
-    // Creo elemento dell'intestazione del post:
-    const postHeaderElement = document.createElement('div');
-    postHeaderElement.classList.add('post__header');
+  // Creo elemento meta del post:
+  const postMetaElement = document.createElement('div');
+  postMetaElement.classList.add('post__meta');
 
-    console.log('Post Header Element:', postHeaderElement);
+  // Creo elemento dell'icona:
+  const postMetaIconElement = document.createElement('div');
+  postMetaIconElement.classList.add('post-meta__icon');
 
-    // Creo elemento meta del post:
-    const postMetaElement = document.createElement('div');
-    postMetaElement.classList.add('post__meta');
+  // Creo l'elemento dell'immagine del profilo:
+  const profilePicElement = document.createElement('img');
+  profilePicElement.classList.add('profile-pic');
+  profilePicElement.src = post.author.image;
+  profilePicElement.alt = post.author.name;
 
-    console.log('Post Meta Element:', postMetaElement);
+  // Aggiungo l'elemento dell'immagine del profilo all'icona:
+  postMetaIconElement.appendChild(profilePicElement);
 
-    // Creo elemento dell'icona:
-    const postMetaIconElement = document.createElement('div');
-    postMetaIconElement.classList.add('post-meta__icon');
+  // Creo elemento dei dati del post:
+  const postMetaDataElement = document.createElement('div');
+  postMetaDataElement.classList.add('post-meta__data');
 
-    console.log('Post Meta Icon Element:', postMetaIconElement);
+  // Creo elemento autore del post:
+  const postMetaAuthorElement = document.createElement('div');
+  postMetaAuthorElement.classList.add('post-meta__author');
+  postMetaAuthorElement.textContent = post.author.name;
 
-    // Creo l'elemento dell'immagine del profilo:
-    const profilePicElement = document.createElement('img');
-    profilePicElement.classList.add('profile-pic');
-    profilePicElement.src = post.author.image;
-    profilePicElement.alt = post.author.name;
+  // Creo elemento tempo del post:
+  const postMetaTimeElement = document.createElement('div');
+  postMetaTimeElement.classList.add('post-meta__time');
+  postMetaTimeElement.textContent = post.date;
 
-    console.log('Profile Picture Element:', profilePicElement);
+  // Aggiungo gli elementi autore e tempo:
+  postMetaDataElement.appendChild(postMetaAuthorElement);
+  postMetaDataElement.appendChild(postMetaTimeElement);
 
-    // Aggiungo l'elemento dell'immagine del profilo all'icona:
-    postMetaIconElement.appendChild(profilePicElement);
+  // Aggiungo l'elemento dell'icona e dei dati:
+  postMetaElement.appendChild(postMetaIconElement);
+  postMetaElement.appendChild(postMetaDataElement);
 
-    // Creo elemento dei dati del post:
-    const postMetaDataElement = document.createElement('div');
-    postMetaDataElement.classList.add('post-meta__data');
+  // Aggiungo l'elemento del meta all'elemento intestazione:
+  postHeaderElement.appendChild(postMetaElement);
 
-    console.log('Post Meta Data Element:', postMetaDataElement);
+  // Creo elemento testo del post:
+  const postTextElement = document.createElement('div');
+  postTextElement.classList.add('post__text');
+  postTextElement.textContent = post.content;
 
-    // Creo elemento autore del post:
-    const postMetaAuthorElement = document.createElement('div');
-    postMetaAuthorElement.classList.add('post-meta__author');
-    postMetaAuthorElement.textContent = post.author.name;
+  // Creo l'elemento dell'immagine del post:
+  const postImageElement = document.createElement('div');
+  postImageElement.classList.add('post__image');
 
-    console.log ('Post Meta Author:', postMetaAuthorElement);
+  const imageElement = document.createElement('img');
+  imageElement.src = post.media;
+  imageElement.alt = '';
 
-    
-})
+  // Aggiungo l'elemento dell'immagine all'elemento dell'immagine del post:
+  postImageElement.appendChild(imageElement);
+
+  // Creo elemento del piè di pagina del post:
+  const postFooterElement = document.createElement('div');
+  postFooterElement.classList.add('post__footer');
+
+  // Creo elemento dei like:
+  const likesElement = document.createElement('div');
+  likesElement.classList.add('likes');
+
+  // Creo elemento del pulsante like:
+  const likeButtonElement = document.createElement('a');
+  likeButtonElement.classList.add('like-button');
+  likeButtonElement.classList.add('js-like-button');
+  likeButtonElement.href = '#';
+  likeButtonElement.dataset.postid = post.id;
+
+  // Creo l'elemento dell'icona del pulsante dei like:
+  const likeButtonIconElement = document.createElement('i');
+  likeButtonIconElement.classList.add('like-button__icon');
+  likeButtonIconElement.classList.add('fas');
+  likeButtonIconElement.classList.add('fa-thumbs-up');
+  likeButtonIconElement.setAttribute('aria-hidden', 'true');
+
+  // Creo l'elemento dell'etichetta del pulsante dei like:
+  const likeButtonLabelElement = document.createElement('span');
+  likeButtonLabelElement.classList.add('like-button__label');
+  likeButtonLabelElement.textContent = 'Mi Piace';
+
+  // Aggiungo l'elemento dell'icona e dell'etichetta del pulsante dei like all'elemento del pulsante dei like:
+  likeButtonElement.appendChild(likeButtonIconElement);
+  likeButtonElement.appendChild(likeButtonLabelElement);
+
+  // Creo l'elemento del contatore dei like:
+  const likesCounterElement = document.createElement('div');
+  likesCounterElement.classList.add('likes__counter');
+  likesCounterElement.textContent = `Piace a ${post.likes} persone`;
+
+  // Aggiungo l'elemento del pulsante dei like e del contatore dei like all'elemento dei like:
+  likesElement.appendChild(likeButtonElement);
+  likesElement.appendChild(likesCounterElement);
+
+  // Aggiungo l'elemento dei like all'elemento del piè di pagina del post:
+  postFooterElement.appendChild(likesElement);
+
+  // Aggiungo gli elementi dell'intestazione, del testo, dell'immagine e del piè di pagina al post:
+  postElement.appendChild(postHeaderElement);
+  postElement.appendChild(postTextElement);
+  postElement.appendChild(postImageElement);
+  postElement.appendChild(postFooterElement);
+
+  // Aggiungo l'elemento del post al container:
+  container.appendChild(postElement);
+});
