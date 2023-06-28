@@ -102,7 +102,7 @@ posts.forEach(post => {
   // Creo elemento tempo del post:
   const postMetaTimeElement = document.createElement('div');
   postMetaTimeElement.classList.add('post-meta__time');
-  postMetaTimeElement.textContent = post.date;
+  postMetaTimeElement.textContent = post.created;
 
   // Aggiungo gli elementi autore e tempo:
   postMetaDataElement.appendChild(postMetaAuthorElement);
@@ -211,8 +211,6 @@ likeButtonElement.addEventListener('click', function(event) {
     console.log(likedPosts);
   });
   
-      
-
   // Aggiungo l'elemento del post al container:
   container.appendChild(postElement);
 });
