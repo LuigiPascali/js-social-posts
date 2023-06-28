@@ -61,6 +61,8 @@ const posts = [
 // Selezione dell'elemento container
 const container = document.getElementById('container');
 
+
+
 // Itero sull'array dei post
 posts.forEach(post => {
   // Creo un elemento div per il post:
@@ -141,7 +143,6 @@ posts.forEach(post => {
   const likeButtonElement = document.createElement('a');
   likeButtonElement.classList.add('like-button');
   likeButtonElement.classList.add('js-like-button');
-  likeButtonElement.href = '#';
   likeButtonElement.dataset.postid = post.id;
 
   // Creo l'elemento dell'icona del pulsante dei like:
@@ -178,6 +179,41 @@ posts.forEach(post => {
   postElement.appendChild(postImageElement);
   postElement.appendChild(postFooterElement);
 
+// MILESTONE 3 + BONUS 3:
+
+// Dichiarazione dell'array likedPosts:
+const likedPosts = [];
+
+// Aggiungi l'evento click al pulsante "Mi Piace":
+likeButtonElement.addEventListener('click', function(event) {
+    event.preventDefault(); // Evita l'azione di navigazione predefinita
+  
+    const postId = parseInt(likeButtonElement.dataset.postid, 10);
+    const likesCounterElement = postElement.querySelector('.likes__counter');
+  
+    if (likedPosts.includes(postId)) {
+      // Se il post è già stato "Messo Mi Piace", decrementa il contatore e rimuovi l'ID dal array likedPosts:
+      const index = likedPosts.indexOf(postId);
+      if (index > -1) {
+        likedPosts.splice(index, 1);
+      }
+      post.likes--;
+      likesCounterElement.textContent = `Piace a ${post.likes} persone`;
+      likeButtonElement.classList.remove('like-button--liked');
+    } else {
+      // Altrimenti, incrementa il contatore e aggiungi l'ID al array likedPosts:
+      likedPosts.push(postId);
+      post.likes++;
+      likesCounterElement.textContent = `Piace a ${post.likes} persone`;
+      likeButtonElement.classList.add('like-button--liked');
+    }
+  
+    console.log(likedPosts);
+  });
+  
+      
+
   // Aggiungo l'elemento del post al container:
   container.appendChild(postElement);
 });
+
