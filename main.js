@@ -64,7 +64,6 @@ const posts = [
         },
         "likes": 71,
         "created": "2023-06-28"
-
     }
 ];
 
