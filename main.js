@@ -55,3 +55,61 @@ const posts = [
         "created": "2021-03-05"
     }
 ];
+
+// MILESTONE 2: 
+
+const container = document.getElementById('container');
+
+// Itero sull'array dei post
+posts.forEach(post => {
+    console.log('Post:', post);
+    // Creo un elemento div per il post:
+    const postElement = document.createElement('div');
+    postElement.classList.add('post');
+
+    console.log('Post Element:', postElement);
+
+    // Creo elemento dell'intestazione del post:
+    const postHeaderElement = document.createElement('div');
+    postHeaderElement.classList.add('post__header');
+
+    console.log('Post Header Element:', postHeaderElement);
+
+    // Creo elemento meta del post:
+    const postMetaElement = document.createElement('div');
+    postMetaElement.classList.add('post__meta');
+
+    console.log('Post Meta Element:', postMetaElement);
+
+    // Creo elemento dell'icona:
+    const postMetaIconElement = document.createElement('div');
+    postMetaIconElement.classList.add('post-meta__icon');
+
+    console.log('Post Meta Icon Element:', postMetaIconElement);
+
+    // Creo l'elemento dell'immagine del profilo:
+    const profilePicElement = document.createElement('img');
+    profilePicElement.classList.add('profile-pic');
+    profilePicElement.src = post.author.image;
+    profilePicElement.alt = post.author.name;
+
+    console.log('Profile Picture Element:', profilePicElement);
+
+    // Aggiungo l'elemento dell'immagine del profilo all'icona:
+    postMetaIconElement.appendChild(profilePicElement);
+
+    // Creo elemento dei dati del post:
+    const postMetaDataElement = document.createElement('div');
+    postMetaDataElement.classList.add('post-meta__data');
+
+    console.log('Post Meta Data Element:', postMetaDataElement);
+
+    // Creo elemento autore del post:
+    const postMetaAuthorElement = document.createElement('div');
+    postMetaAuthorElement.classList.add('post-meta__author');
+    postMetaAuthorElement.textContent = post.author.name;
+
+    console.log ('Post Meta Author:', postMetaAuthorElement);
+
+    
+})
