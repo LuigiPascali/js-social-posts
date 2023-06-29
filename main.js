@@ -56,8 +56,8 @@ const posts = [
     },
     {
         "id": 6,
-        "content": "I Bonus 1 e 2 proverò a farli domani perchè oggi mi sta esplodendo la testa, ma questo esercizio è stato un ottimo allenamento per creare la pagina completamente in JavaScript. Questo è lo stato del mio cervello in questo momento:",
-        "media": "https://unsplash.it/600/400?image=59",
+        "content": "Bonus 1 e 3 semplici, sono riuscito a farli abbastanza tranquillamente a mente lucida, il Bonus 2 è un po' più complesso, cercherò meglio su internet nel pomeriggio e proverò a risolverlo..Intanto posto una foto a caso!",
+        "media": "https://unsplash.it/600/400?image=118",
         "author": {
             "name": "Luigi Maria Pascali",
             "image": "https://unsplash.it/300/300?image=1"
@@ -99,6 +99,7 @@ posts.forEach(post => {
   // Aggiungo l'elemento dell'immagine del profilo all'icona:
   postMetaIconElement.appendChild(profilePicElement);
 
+  
   // Creo elemento dei dati del post:
   const postMetaDataElement = document.createElement('div');
   postMetaDataElement.classList.add('post-meta__data');
@@ -234,5 +235,7 @@ likeButtonElement.addEventListener('click', function(event) {
   // Aggiungo l'elemento del post al container:
   container.appendChild(postElement);
 });
+
+
 
 
