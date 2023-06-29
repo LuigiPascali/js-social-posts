@@ -57,7 +57,7 @@ const posts = [
     {
         "id": 6,
         "content": "I Bonus 1 e 2 proverò a farli domani perchè oggi mi sta esplodendo la testa, ma questo esercizio è stato un ottimo allenamento per creare la pagina completamente in JavaScript. Questo è lo stato del mio cervello in questo momento:",
-        "media": "https://unsplash.it/600/400?image=79",
+        "media": "https://unsplash.it/600/400?image=59",
         "author": {
             "name": "Luigi Maria Pascali",
             "image": "https://unsplash.it/300/300?image=1"
@@ -108,10 +108,21 @@ posts.forEach(post => {
   postMetaAuthorElement.classList.add('post-meta__author');
   postMetaAuthorElement.textContent = post.author.name;
 
+ //   // Creo elemento tempo del post:
+ //   const postMetaTimeElement = document.createElement('div');
+ //   postMetaTimeElement.classList.add('post-meta__time');
+ //   postMetaTimeElement.textContent = post.created;
+
   // Creo elemento tempo del post:
   const postMetaTimeElement = document.createElement('div');
   postMetaTimeElement.classList.add('post-meta__time');
-  postMetaTimeElement.textContent = post.created;
+
+  //   BONUS 1:
+  const createdDate = new Date(post.created);
+  const formattedDate = createdDate.toLocaleDateString('it-IT');
+  postMetaTimeElement.textContent = formattedDate;
+
+  console.log(formattedDate);
 
   // Aggiungo gli elementi autore e tempo:
   postMetaDataElement.appendChild(postMetaAuthorElement);
